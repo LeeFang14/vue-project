@@ -1,0 +1,21 @@
+a {
+  text-decoration: none;
+}
+
+input,
+textarea,
+button {
+  border: none;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+button {
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+}

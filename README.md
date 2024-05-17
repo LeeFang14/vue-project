@@ -1,35 +1,14 @@
-# vue-project
+# 切版作業
 
-This template should help get you started developing with Vue 3 in Vite.
+## 使用套件
 
-## Recommended IDE Setup
+- JS 框架：
+  - [Vue.js](https://vuejs.org)
+  - [Vite](https://vitejs.dev/)
+  - [Vue Router](https://router.vuejs.org/)
+- CSS預處理器：[Sass: Syntactically Awesome Style Sheets](https://sass-lang.com/)
+- 視覺化套件：[D3 by Observable | The JavaScript library for bespoke data visualization](https://d3js.org/)
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## 設計圖
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+只有手機版：寬度312px
