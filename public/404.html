@@ -4,11 +4,11 @@
     <meta charset="utf-8" />
     <title>Page Not Found</title>
     <script type="text/javascript">
-      var pathSegmentsToKeep = 0
+      var pathSegmentsToKeep = 1
 
       var l = window.location
-      // 只有當路徑為/時才重定向到首頁
-      if (l.pathname === '/') {
+      // 只有當路徑不為 / 時才重定向到首頁
+      if (l.pathname !== '/') {
         l.replace(
           l.protocol +
             '//' +
