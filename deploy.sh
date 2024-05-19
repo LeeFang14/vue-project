@@ -12,4 +12,4 @@ git add -A # 對 dist 內所有檔案 add
 
 git commit -m 'deploy' # 提交
 
-git push -f git@github.com:LeeFang14/vue-project.git main:gh-pages
+git push -f git@github.com:LeeFang14/vue-project.git master:gh-pages
