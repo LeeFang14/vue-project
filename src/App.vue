@@ -1,39 +1,3 @@
-<script setup>
-import { useRouter, RouterView } from 'vue-router'
-import { computed } from 'vue'
-const router = useRouter()
-const currentRoute = computed(() => router.currentRoute.value)
-
-const navList = [
-  {
-    path: '/home',
-    name: '屏東歸來廠'
-  },
-  {
-    path: '/about',
-    name: 'about'
-  }
-]
-
-function navigate(e) {
-  const selectedValue = e.target.value
-  router.push(selectedValue)
-}
-
-const isSecondLevelRoute = computed(() => {
-  const regex = /\/[^/]+\/[^/]+/g
-  return regex.test(currentRoute.value.path)
-})
-
-function goBack() {
-  router.go(-1)
-}
-
-function goToHomePage() {
-  router.push('/')
-}
-</script>
-
 <template>
   <div class="wrapper">
     <header>
@@ -86,9 +50,48 @@ function goToHomePage() {
     </main>
   </div>
 </template>
+
+<script setup>
+import { useRouter, RouterView } from 'vue-router'
+import { computed } from 'vue'
+const router = useRouter()
+const currentRoute = computed(() => router.currentRoute.value)
+
+const navList = [
+  {
+    path: '/home',
+    name: '屏東歸來廠'
+  },
+  {
+    path: '/about',
+    name: 'about'
+  }
+]
+
+function navigate(e) {
+  const selectedValue = e.target.value
+  router.push(selectedValue)
+}
+
+const isSecondLevelRoute = computed(() => {
+  const regex = /\/[^/]+\/[^/]+/g
+  return regex.test(currentRoute.value.path)
+})
+
+function goBack() {
+  router.go(-1)
+}
+
+function goToHomePage() {
+  router.push('/')
+}
+</script>
+
 <style lang="scss" scoped>
 .wrapper {
+  position: relative;
   min-height: 100vh;
+  background: $bg-100;
 }
 .container {
   min-width: 313px;
@@ -186,14 +189,15 @@ main {
   background: $bg-100;
   .container {
     padding: 0px 8px 26px;
-    min-height: calc(100vh - 42px - 58px);
     flex-direction: column;
     & > div {
       color: $primary;
     }
   }
   .btn_context {
-    // margin-top: -10px;
+    position: sticky;
+    bottom: 5px;
+    right: 5px;
     text-align: end;
   }
   .home_btn {

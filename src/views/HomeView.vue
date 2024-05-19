@@ -16,6 +16,7 @@
     </div>
   </div>
 </template>
+
 <script setup>
 import Calendar from '@/components/Calendar.vue'
 const fakeTodayData = {
@@ -95,6 +96,7 @@ const nestedViews = [
   }
 ]
 </script>
+
 <style lang="scss" scoped>
 .page_container {
   display: flex;

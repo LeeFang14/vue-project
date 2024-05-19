@@ -8,6 +8,6 @@
 
 <style lang="scss" scoped>
 .context {
-  min-height: 50vh;
+  min-height: calc(100vh - 57px - 42px);
 }
 </style>

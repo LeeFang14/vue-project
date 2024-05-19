@@ -8,7 +8,7 @@ cd dist
 
 # git checkout main  沒有main分支，所以沒有做這個切換分支的動作。
 
-git add . # 對 dist 內所有檔案 add
+git add -A # 對 dist 內所有檔案 add
 
 git commit -m 'deploy' # 提交
 
