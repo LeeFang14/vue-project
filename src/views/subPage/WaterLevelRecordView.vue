@@ -1,23 +1,25 @@
 <template>
-  <div
-    class="card_item"
-    v-for="item in fackData"
-    :key="item.pondId"
-    :class="{ abnormal: item.abnormalStatus }"
-  >
-    <div>
-      <p>{{ item.pondId }}</p>
-      <p>{{ item.pondName }}</p>
-      <p>{{ item.waterDepthLocation }}%</p>
-      <p>目前{{ item.waterCapacity }}立方公尺</p>
-    </div>
+  <div class="card_list">
+    <div
+      class="card_item"
+      v-for="item in fakeData"
+      :key="item.pondId"
+      :class="{ abnormal: item.abnormalStatus }"
+    >
+      <div>
+        <p>{{ item.pondId }}</p>
+        <p>{{ item.pondName }}</p>
+        <p>{{ item.waterDepthLocation }}%</p>
+        <p>目前{{ item.waterCapacity }}立方公尺</p>
+      </div>
 
-    <svg
-      :id="'fillgauge' + item.pondId"
-      width="120px"
-      height="120px"
-      :data="item.waterDepthLocation"
-    ></svg>
+      <svg
+        :id="'fillgauge' + item.pondId"
+        width="120px"
+        height="120px"
+        :data="item.waterDepthLocation"
+      ></svg>
+    </div>
   </div>
 </template>
 
@@ -25,7 +27,7 @@
 import { FluidGauge } from '@/utils/liquidFillGauge.js'
 import { onMounted } from 'vue'
 
-const fackData = [
+const fakeData = [
   {
     pondId: '01',
     pondName: '白蝦池',
@@ -62,7 +64,7 @@ onMounted(() => {
     new FluidGauge(elementId, value, config)
   }
 
-  fackData.forEach((item) => {
+  fakeData.forEach((item) => {
     createGauge('fillgauge' + item.pondId, parseInt(item.waterDepthLocation), {
       circleColor: '#4aadde',
       textSize: 0,
@@ -75,6 +77,11 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
+.card_list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
 .card_item {
   display: flex;
   padding: 5px 0;

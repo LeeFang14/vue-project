@@ -10,8 +10,8 @@ const navList = [
     name: '屏東歸來廠'
   },
   {
-    path: '/jiuru',
-    name: '屏東九如場'
+    path: '/about',
+    name: 'about'
   }
 ]
 
@@ -36,75 +36,78 @@ function goToHomePage() {
 
 <template>
   <div class="wrapper">
-    <header class="header">
-      <button class="prev_btn" type="button" @click="goBack">
-        <template v-if="isSecondLevelRoute">
-          <i class="fa-solid fa-chevron-left"></i>
-        </template>
-      </button>
-      <div class="person_context">
-        <button type="button" class="bell_btn">
-          <i class="fa-solid fa-bell"></i>
-          <span class="notify">1</span>
+    <header>
+      <div class="container">
+        <button class="prev_btn" type="button" @click="goBack">
+          <template v-if="isSecondLevelRoute">
+            <i class="fa-solid fa-chevron-left"></i>
+          </template>
         </button>
-        <button type="button">
-          <i class="fa-solid fa-right-from-bracket"></i>
-        </button>
-        <button class="person_btn">小明</button>
+        <div class="person_context">
+          <button type="button" class="bell_btn">
+            <i class="fa-solid fa-bell"></i>
+            <span class="notify">1</span>
+          </button>
+          <button type="button">
+            <i class="fa-solid fa-right-from-bracket"></i>
+          </button>
+          <button class="person_btn">小明</button>
+        </div>
       </div>
     </header>
     <nav>
-      <span class="current_page">{{ isSecondLevelRoute ? currentRoute.name : '' }}</span>
-      <div class="custom-select-wrapper">
-        <select @change="navigate($event)">
-          <option v-for="nav in navList" :key="nav.path" :value="nav.path">
-            {{ nav.name }}
-          </option>
-        </select>
-        <span class="custom-arrow">
-          <i class="fa-solid fa-chevron-down"></i>
-        </span>
+      <div class="container">
+        <span class="current_page">{{ isSecondLevelRoute ? currentRoute.name : '' }}</span>
+        <div class="custom-select-wrapper">
+          <select @change="navigate($event)">
+            <option v-for="nav in navList" :key="nav.path" :value="nav.path">
+              {{ nav.name }}
+            </option>
+          </select>
+          <span class="custom-arrow">
+            <i class="fa-solid fa-chevron-down"></i>
+          </span>
+        </div>
       </div>
     </nav>
     <main>
-      <RouterView />
+      <div class="container">
+        <RouterView v-slot="{ Component }">
+          <Transition name="slide" mode="out-in">
+            <Component :is="Component" :key="$route.path"></Component>
+          </Transition>
+        </RouterView>
+        <div class="btn_context">
+          <button class="home_btn" type="button" @click="goToHomePage" v-if="isSecondLevelRoute">
+            <i class="fa-solid fa-house"></i>
+          </button>
+        </div>
+      </div>
     </main>
-    <button class="home_btn" type="button" @click="goToHomePage" v-if="isSecondLevelRoute">
-      <i class="fa-solid fa-house"></i>
-    </button>
   </div>
 </template>
 <style lang="scss" scoped>
 .wrapper {
-  position: relative;
-  height: 100vh;
-  background: $bg-100;
-
-  .home_btn {
-    position: absolute;
-    bottom: 5px;
-    right: 12px;
-    color: $white;
-    background: $primary;
-    border-radius: 50%;
-    padding: 9.5px 8px;
-
+  min-height: 100vh;
+}
+.container {
+  min-width: 313px;
+  max-width: 576px;
+  margin: 0 auto;
+}
+header {
+  background: $primary;
+  .container {
+    display: flex;
+    padding: 8px 15px;
+    justify-content: space-between;
     i {
+      color: $white;
       font-size: 25px;
     }
   }
 }
-header {
-  padding: 8px 15px;
-  display: flex;
-  justify-content: space-between;
 
-  background: $primary;
-  i {
-    color: $white;
-    font-size: 25px;
-  }
-}
 .person_context {
   display: flex;
   justify-content: flex-end;
@@ -134,11 +137,13 @@ header {
 }
 
 nav {
-  padding: 12px 8px;
   background: $bg-100;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  .container {
+    padding: 12px 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
 
 .current_page {
@@ -178,13 +183,41 @@ select {
 }
 
 main {
-  display: flex;
-  padding: 0px 8px 26px;
-  gap: 12px;
-  flex-direction: column;
   background: $bg-100;
-  & > div {
-    color: $primary;
+  .container {
+    padding: 0px 8px 26px;
+    min-height: calc(100vh - 42px - 58px);
+    flex-direction: column;
+    & > div {
+      color: $primary;
+    }
   }
+  .btn_context {
+    // margin-top: -10px;
+    text-align: end;
+  }
+  .home_btn {
+    color: $white;
+    background: $primary;
+    border-radius: 50%;
+    padding: 9.5px 8px;
+
+    i {
+      font-size: 25px;
+    }
+  }
+}
+
+.slide-enter-active,
+.slide-leave-active {
+  transition:
+    opacity 1s,
+    transform 1s;
+}
+
+.slide-enter-from,
+.slide-leave-to {
+  opacity: 0;
+  transform: translateX(-10%);
 }
 </style>

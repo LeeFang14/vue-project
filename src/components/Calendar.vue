@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="component_container">
     <div class="calendar_context">
       <div class="week">{{ data.week }}</div>
       <div class="date_context">
@@ -17,7 +17,9 @@
           <span>{{ `${data.year}/${data.month}/${data.day}` }}</span>
           <span>{{ shedule.scheduleTime }}</span>
         </div>
-        <p class="text">{{ shedule.scheduleText }}</p>
+        <p>
+          {{ shedule.scheduleText }}
+        </p>
       </div>
     </div>
   </div>
@@ -33,7 +35,7 @@ defineProps({
 </script>
 
 <style lang="scss" scoped>
-.container {
+.component_container {
   padding: 33px 8px 5px;
   background: $Secondary;
   border-radius: 5px;
@@ -97,8 +99,6 @@ defineProps({
   color: $gray-100;
   border-radius: 5px;
   .date {
-    span:nth-child(1) {
-    }
     span:nth-child(2) {
       margin-left: 10px;
     }

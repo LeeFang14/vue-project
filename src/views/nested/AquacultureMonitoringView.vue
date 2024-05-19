@@ -1,18 +1,20 @@
 <template>
-  <div class="nested-nav">
-    <router-link
-      v-for="view in nestedViews"
-      :key="view.path"
-      :to="view.path"
-      :class="{ nav_item: isOdd, status: view.status }"
-    >
-      <div>
-        <img :src="view.imgURL" alt="nav-icon" />
-      </div>
-      <p>
-        {{ view.name }}
-      </p>
-    </router-link>
+  <div>
+    <div class="nested-nav">
+      <router-link
+        v-for="view in nestedViews"
+        :key="view.path"
+        :to="`/home/${view.path}`"
+        :class="{ nav_item: isOdd, status: view.status }"
+      >
+        <div>
+          <img :src="view.imgURL" alt="nav-icon" />
+        </div>
+        <p>
+          {{ view.name }}
+        </p>
+      </router-link>
+    </div>
   </div>
 </template>
 
@@ -20,55 +22,55 @@
 const nestedViews = [
   {
     name: '水溫紀錄',
-    path: '/home/aquaculture-monitoring/water-temperature-record',
+    path: 'aquaculture-monitoring/water-temperature-record',
     imgURL: 'https://via.placeholder.com/60x60?text=Image+1',
     status: false
   },
   {
     name: '水位紀錄',
-    path: '/home/aquaculture-monitoring/water-level-record',
+    path: 'aquaculture-monitoring/water-level-record',
     imgURL: 'https://via.placeholder.com/60x60?text=Image+2',
     status: true
   },
   {
     name: 'ORP 紀錄',
-    path: '/home/aquaculture-monitoring/orp-record',
+    path: 'aquaculture-monitoring/orp-record',
     imgURL: 'https://via.placeholder.com/60x60?text=Image+3',
     status: false
   },
   {
     name: '溶氧紀錄',
-    path: '/home/aquaculture-monitoring/dissolved-oxygen-record',
+    path: 'aquaculture-monitoring/dissolved-oxygen-record',
     imgURL: 'https://via.placeholder.com/60x60?text=Image+4',
     status: true
   },
   {
     name: 'pH紀錄',
-    path: '/home/aquaculture-monitoring/ph-record',
+    path: 'aquaculture-monitoring/ph-record',
     imgURL: 'https://via.placeholder.com/60x60?text=Image+5',
     status: true
   },
   {
     name: '鹽度紀錄',
-    path: '/home/aquaculture-monitoring/salinity-record',
+    path: 'aquaculture-monitoring/salinity-record',
     imgURL: 'https://via.placeholder.com/60x60?text=Image+6',
     status: false
   },
   {
     name: '氨紀錄',
-    path: '/home/aquaculture-monitoring/ammonia-record',
+    path: 'aquaculture-monitoring/ammonia-record',
     imgURL: 'https://via.placeholder.com/60x60?text=Image+7',
     status: false
   },
   {
     name: '亞硝酸紀錄',
-    path: '/home/aquaculture-monitoring/nitrite-record',
+    path: 'aquaculture-monitoring/nitrite-record',
     imgURL: 'https://via.placeholder.com/60x60?text=Image+8',
     status: false
   },
   {
     name: '生菌量紀錄',
-    path: '/home/aquaculture-monitoring/bacterial-load-record',
+    path: 'aquaculture-monitoring/bacterial-load-record',
     imgURL: 'https://via.placeholder.com/60x60?text=Image+9',
     status: false
   }
